@@ -297,5 +297,24 @@ namespace Tests
 
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TodoList_CreateDuplicate()
+        {
+            int expected = 4;
+            int result;
+
+            string tmp = "Сделать предыдущую лабу";
+
+            TodoList td = new TodoList();
+            td.Push(tmp);
+            td.Push("Проснуться раньше 12:00");
+            td.Push(tmp);
+
+            result = td.Dupe(1);
+
+            Assert.AreEqual(expected, result);
+        }
+
     }
 }

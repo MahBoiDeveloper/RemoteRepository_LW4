@@ -67,6 +67,13 @@ namespace ToDoList
             return counter;
         }
 
+        public int Dupe(int i)
+        {
+            buff.Add(buff[i]);
+            Count++;
+            return Count;
+        }
+
         public string Get(int i) => buff[i];
     }
 }
