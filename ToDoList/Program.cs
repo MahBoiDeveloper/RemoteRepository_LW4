@@ -4,19 +4,20 @@ namespace ToDoList
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
         }
-
-        
     }
 
-    public static class _List
+    public class TodoList
     {
-        public static string TypeText(string text)
+        public bool IsEmpty { get; private set; }
+
+        public TodoList() {}
+        public string GetAllTasks()
         {
-            return "text";
+            return string.Empty;
         }
     }
 }

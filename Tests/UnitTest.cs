@@ -8,11 +8,13 @@ namespace Tests
     public class UnitTest
     {
         [TestMethod]
-        public void Main_TypeSomeText()
+        public void TodoList_IsEmptyThenAllocated()
         {
-            string tmp = "some text";
-            
-            string result = _List.TypeText(tmp);
+            bool tmp = true;
+            bool result;
+
+            TodoList td = new TodoList();
+            result = td.IsEmpty;
 
             Assert.AreEqual(result, tmp);
         }
