@@ -18,5 +18,18 @@ namespace Tests
 
             Assert.AreEqual(result, tmp);
         }
+
+        [TestMethod]
+        public void TodoList_IsEmptyThenElementHasAdded()
+        {
+            bool tmp = false;
+            bool result;
+
+            TodoList td = new TodoList();
+            td.Push("Сделать лабу");
+            result = td.IsEmpty;
+
+            Assert.AreEqual(result, tmp);
+        }
     }
 }

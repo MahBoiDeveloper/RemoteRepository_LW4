@@ -12,12 +12,16 @@ namespace ToDoList
 
     public class TodoList
     {
-        public bool IsEmpty { get; private set; }
+        public bool IsEmpty { get; private set; } = true;
 
         public TodoList() {}
         public string GetAllTasks()
         {
             return string.Empty;
+        }
+        public void Push(string text)
+        {
+
         }
     }
 }
