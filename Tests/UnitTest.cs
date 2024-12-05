@@ -39,7 +39,8 @@ namespace Tests
             bool result;
 
             TodoList td = new TodoList();
-            td.Push("Сделать лабу").Pop();
+            td.Push("Сделать лабу");
+            td.Pop();
             result = td.IsEmpty;
 
             Assert.AreEqual(expected, result);
@@ -210,7 +211,7 @@ namespace Tests
             td.Push("Проснуться раньше 12:00");
             td.Push("Сделать предыдущую лабу");
             td.Push(expected);
-            result = td.Get(3);
+            result = td.Get(2);
 
             Assert.AreEqual(expected, result);
         }
