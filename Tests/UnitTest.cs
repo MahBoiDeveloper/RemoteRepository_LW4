@@ -56,5 +56,18 @@ namespace Tests
 
             Assert.AreEqual(result, tmp);
         }
+
+        [TestMethod]
+        public void TodoList_CountThenElementHasAdded()
+        {
+            int tmp = 1;
+            int result;
+
+            TodoList td = new TodoList();
+            result = td.Push("Сроки горят, надо делать лабу").Count;
+
+            Assert.AreEqual(result, tmp);
+        }
+
     }
 }
