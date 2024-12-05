@@ -74,6 +74,13 @@ namespace ToDoList
             return Count;
         }
 
+        public void ClearAllTasks() 
+        {
+            IsEmpty = true;
+            Count = 0;
+            buff.Clear();
+        }
+
         public string Get(int i) => buff[i];
     }
 }

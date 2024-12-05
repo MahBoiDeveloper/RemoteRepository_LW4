@@ -316,5 +316,23 @@ namespace Tests
             Assert.AreEqual(expected, result);
         }
 
+        [TestMethod]
+        public void TodoList_ClearAll()
+        {
+            int expected = 0;
+            int result;
+
+            string tmp = "Сделать предыдущую лабу";
+
+            TodoList td = new TodoList();
+            td.Push(tmp);
+            td.Push("Проснуться раньше 12:00");
+            td.Push(tmp);
+            td.ClearAllTasks();
+            result = td.GetAllTasks().Count;
+
+            Assert.AreEqual(expected, result);
+        }
+
     }
 }
