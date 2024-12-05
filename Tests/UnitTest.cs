@@ -44,5 +44,17 @@ namespace Tests
 
             Assert.AreEqual(result, tmp);
         }
+
+        [TestMethod]
+        public void TodoList_CountThenAllocated()
+        {
+            int tmp = 0;
+            int result;
+
+            TodoList td = new TodoList();
+            result = td.Count;
+
+            Assert.AreEqual(result, tmp);
+        }
     }
 }

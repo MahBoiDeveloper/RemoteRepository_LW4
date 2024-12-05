@@ -13,6 +13,7 @@ namespace ToDoList
     public class TodoList
     {
         public bool IsEmpty { get; private set; } = true;
+        public int Count { get; private set; }
 
         public TodoList() {}
         public string GetAllTasks()
