@@ -20,9 +20,9 @@ namespace ToDoList
         private List<string> buff = new List<string>();
 
         public TodoList() {}
-        public string GetAllTasks()
+        public List<string> GetAllTasks()
         {
-            return string.Empty;
+            return new List<string>();
         }
         public TodoList Push(string text)
         {

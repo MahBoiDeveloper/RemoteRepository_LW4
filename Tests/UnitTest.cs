@@ -215,5 +215,51 @@ namespace Tests
 
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TodoList_3PushGet2nd()
+        {
+            string expected = "Сделать лабу номер 5";
+            string result;
+
+            TodoList td = new TodoList();
+            td.Push("Проснуться раньше 12:00");
+            td.Push(expected);
+            td.Push("Сделать предыдущую лабу");
+            result = td.Get(1);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_3PushGet1st()
+        {
+            string expected = "Сделать лабу номер 5";
+            string result;
+
+            TodoList td = new TodoList();
+            td.Push(expected);
+            td.Push("Проснуться раньше 12:00");
+            td.Push("Сделать предыдущую лабу");
+            result = td.Get(0);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_GetAllTasks()
+        {
+            int expected = 3;
+            int result;
+
+            TodoList td = new TodoList();
+            td.Push("Сделать лабу номер 5");
+            td.Push("Проснуться раньше 12:00");
+            td.Push("Сделать предыдущую лабу");
+
+            result = td.GetAllTasks().Count;
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
