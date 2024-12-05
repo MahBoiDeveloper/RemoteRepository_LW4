@@ -21,7 +21,7 @@ namespace ToDoList
         }
         public void Push(string text)
         {
-
+            IsEmpty = false;
         }
     }
 }
