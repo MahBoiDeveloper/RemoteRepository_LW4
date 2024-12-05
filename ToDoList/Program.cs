@@ -27,6 +27,7 @@ namespace ToDoList
 
         public TodoList Pop()
         {
+            IsEmpty = true;
             return this;
         }
     }
