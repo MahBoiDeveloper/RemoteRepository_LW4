@@ -19,9 +19,15 @@ namespace ToDoList
         {
             return string.Empty;
         }
-        public void Push(string text)
+        public TodoList Push(string text)
         {
             IsEmpty = false;
+            return this;
+        }
+
+        public TodoList Pop()
+        {
+            return this;
         }
     }
 }

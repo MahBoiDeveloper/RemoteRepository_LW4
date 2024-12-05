@@ -31,5 +31,18 @@ namespace Tests
 
             Assert.AreEqual(result, tmp);
         }
+
+        [TestMethod]
+        public void TodoList_IsEmptyThen1PushAnd1Pop()
+        {
+            bool tmp = true;
+            bool result;
+
+            TodoList td = new TodoList();
+            td.Push("Сделать лабу").Pop();
+            result = td.IsEmpty;
+
+            Assert.AreEqual(result, tmp);
+        }
     }
 }
