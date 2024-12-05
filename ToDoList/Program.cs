@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Xml.Schema;
 
 namespace ToDoList
 {
@@ -15,6 +16,8 @@ namespace ToDoList
         public bool IsEmpty { get; private set; } = true;
         public int Count { get; private set; } = 0;
 
+        private string[] buff = new string[2];
+
         public TodoList() {}
         public string GetAllTasks()
         {
@@ -22,14 +25,19 @@ namespace ToDoList
         }
         public TodoList Push(string text)
         {
-            IsEmpty = false;
+            buff[Count] = text;
+            Count += 1;
+            IsEmpty = Count == 0;
             return this;
         }
 
-        public TodoList Pop()
+        public string Pop()
         {
-            IsEmpty = true;
-            return this;
+            Count = Count == 0? Count : Count - 1;
+            IsEmpty = Count == 0;
+            return buff[Count];
         }
+
+        public string Get(int i) => buff[i];
     }
 }

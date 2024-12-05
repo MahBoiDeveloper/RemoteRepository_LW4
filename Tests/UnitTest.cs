@@ -8,66 +8,211 @@ namespace Tests
     public class UnitTest
     {
         [TestMethod]
-        public void TodoList_IsEmptyThenAllocated()
+        public void TodoList_IsEmptyWhenAllocated()
         {
-            bool tmp = true;
+            bool expected = true;
             bool result;
 
             TodoList td = new TodoList();
             result = td.IsEmpty;
 
-            Assert.AreEqual(result, tmp);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void TodoList_IsEmptyThenElementHasAdded()
+        public void TodoList_IsEmptyWhenElementHasAdded()
         {
-            bool tmp = false;
+            bool expected = false;
             bool result;
 
             TodoList td = new TodoList();
             td.Push("Сделать лабу");
             result = td.IsEmpty;
 
-            Assert.AreEqual(result, tmp);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void TodoList_IsEmptyThen1PushAnd1Pop()
+        public void TodoList_IsEmptyWhen1PushAnd1Pop()
         {
-            bool tmp = true;
+            bool expected = true;
             bool result;
 
             TodoList td = new TodoList();
             td.Push("Сделать лабу").Pop();
             result = td.IsEmpty;
 
-            Assert.AreEqual(result, tmp);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void TodoList_CountThenAllocated()
+        public void TodoList_CountWhenAllocated()
         {
-            int tmp = 0;
+            int expected = 0;
             int result;
 
             TodoList td = new TodoList();
             result = td.Count;
 
-            Assert.AreEqual(result, tmp);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void TodoList_CountThenElementHasAdded()
+        public void TodoList_CountWhenElementHasAdded()
         {
-            int tmp = 1;
+            int expected = 1;
             int result;
 
             TodoList td = new TodoList();
             result = td.Push("Сроки горят, надо делать лабу").Count;
 
-            Assert.AreEqual(result, tmp);
+            Assert.AreEqual(expected, result);
         }
 
+        [TestMethod]
+        public void TodoList_CountWhen1PushAnd1Pop()
+        {
+            int expected = 0;
+            int result;
+
+            TodoList td = new TodoList();
+            td.Push("Сделать лабу").Pop();
+            result = td.Count;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_CountWhen2Push()
+        {
+            int expected = 2;
+            int result;
+
+            TodoList td = new TodoList();
+            result = td.Push("Сделать лабу").Push("Сходить в МФЦ").Count;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_IsEmptyWhen2Push()
+        {
+            bool expected = false;
+            bool result;
+
+            TodoList td = new TodoList();
+            result = td.Push("Сделать лабу").Push("Сходить в МФЦ").IsEmpty;
+
+            Assert.AreEqual(expected, result);
+        }
+        
+        [TestMethod]
+        public void TodoList_IsEmptyWhen2Push1Pop()
+        {
+            bool expected = false;
+            bool result;
+
+            TodoList td = new TodoList();
+            td.Push("Сделать лабу").Push("Сходить в МФЦ").Pop();
+            result = td.IsEmpty;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_CountWhen2Push1Pop()
+        {
+            int expected = 1;
+            int result;
+
+            TodoList td = new TodoList();
+            td.Push("Сделать лабу").Push("Сходить в МФЦ").Pop();
+            result = td.Count;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_CountWhen2Pop()
+        {
+            int expected = 0;
+            int result;
+
+            TodoList td = new TodoList();
+            td.Pop();
+            td.Pop();
+            result = td.Count;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_IsEmptyWhen2Pop()
+        {
+            bool expected = true;
+            bool result;
+
+            TodoList td = new TodoList();
+            td.Pop();
+            td.Pop();
+            result = td.IsEmpty;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_Get1st()
+        {
+            string expected = "Сделать лабу номер 4";
+            string result;
+
+            TodoList td = new TodoList();
+            result = td.Push(expected).Get(0);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_Get2nd()
+        {
+            string expected = "Сделать лабу номер 5";
+            string result;
+
+            TodoList td = new TodoList();
+            result = td.Push("Сделать предыдущую лабу")
+                       .Push(expected)
+                       .Get(1);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_2PushGet1st()
+        {
+            string expected = "Сделать лабу номер 5";
+            string result;
+
+            TodoList td = new TodoList();
+            td.Push(expected);
+            td.Push("Сделать предыдущую лабу");
+            result = td.Get(0);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TodoList_3PushGet3rd()
+        {
+            string expected = "Сделать лабу номер 5";
+            string result;
+
+            TodoList td = new TodoList();
+            td.Push("Проснуться раньше 12:00");
+            td.Push("Сделать предыдущую лабу");
+            td.Push(expected);
+            result = td.Get(3);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
