@@ -22,7 +22,7 @@ namespace ToDoList
         public TodoList() {}
         public List<string> GetAllTasks()
         {
-            return new List<string>();
+            return buff;
         }
         public TodoList Push(string text)
         {
@@ -41,12 +41,30 @@ namespace ToDoList
 
             if (Count != 0)
             {
-                tmp = buff[Count - 1];
-                buff.RemoveAt(Count - 1);
+                tmp = buff[Count];
+                buff.RemoveAt(Count);
                 return tmp;
             }
 
             return string.Empty;
+        }
+
+        public void DoneTask(int i)
+        {
+            Count = Count == 0 ? Count : Count - 1;
+            IsEmpty = Count == 0;
+
+            if (Count != 0)
+                buff.RemoveAt(i);
+        }
+
+        public int Duplicate(string text)
+        {
+            int counter = 0;
+            foreach(var elem in buff)
+                counter = elem == text ? counter + 1 : counter;
+
+            return counter;
         }
 
         public string Get(int i) => buff[i];
